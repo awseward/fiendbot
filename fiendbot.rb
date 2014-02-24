@@ -1,10 +1,17 @@
 require 'cinch'
 require 'cinch/plugins/identify'
 
+mode = ARGV[0]
+if mode == "production"
+  nemesis_name = "friendbot"
+  channel_name = "#friendboyz"
+else
+  nemesis_name = "fakefriendbot"
+  channel_name = "#fiendboyz.test"
+end
+  
 my_name = "fiendbot"
-nemesis_name = "fakefriendbot"
 server_hostname = "irc.freenode.org"
-channel_name = "#fiendboyz.test"
 
 bot = Cinch::Bot.new do
   configure do |c|
