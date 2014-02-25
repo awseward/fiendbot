@@ -10,11 +10,16 @@ function finish {
     kill $FIEND_PID
     echo " *** killing fakefriendbot (pid: ${FAKEFRIEND_PID}) *** "
     kill $FAKEFRIEND_PID
+    exit $?
 }
 
-while read line; do
+trap finish SIGINT SIGKILL
+
+while true; do
+    read line
     if [ "$line" = "exit" -o "$line" = "quit" ]; then
         finish
-        exit 0
-    fi
+    fi    
 done
+
+
