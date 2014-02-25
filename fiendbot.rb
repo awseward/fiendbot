@@ -1,5 +1,8 @@
 require 'cinch'
 require 'cinch/plugins/identify'
+require 'yaml'
+
+responses = YAML.load_file("responses.yml")
 
 # vars and whatnot
 
@@ -14,47 +17,6 @@ end
   
 my_name = "fiendbot"
 server_hostname = "irc.freenode.org"
-
-general_responses = [
-                     "Leave me alone!",
-                     "Go away!",
-                     "Get out of my face!",
-                     "Get off my lawn!",
-                     "Ughh.",
-                     "Jeez! What do you want?",
-                     "You talk too much.",
-                     "...seriously?",
-                     "You don't know me!",
-                     "I don't have time for this!",
-                     "Hey... can you not?",
-                     "Get lost!",
-                     "Just don't.",
-                     "Are you done?",
-                     "You've gotta be kidding me!",
-                     "Excuse me?!",
-                     "What!",
-                     "Ummmm... no.",
-                     "...",
-                     "WRONG!",
-                     "Knock it off!",
-                     "Get out of here!"
-                    ]
-
-fiendbot_questions = [
-                      "Did somebody say",
-                      "Did I hear",
-                      "Did someone just say",
-                      "Correct me if I'm wrong, but did I just hear",
-                      "Could someone really have said"
-                     ]
-
-friendbot_responses = [
-                           "Somebody did say",
-                           "Someone said",
-                           "I think someone said",
-                           "I definitely heard",
-                           "Somebody mentioned an"
-                          ]
 
 def random_choice(phrase_array)
   random_index = rand(phrase_array.length)
@@ -80,16 +42,16 @@ bot = Cinch::Bot.new do
   end
 
   on :message, /^#{my_name}/i do |m|
-    m.reply random_choice general_responses
+    m.reply random_choice responses[:general_responses]
   end
 
   on :message, /infinite loop/i do |m|
     if can_speak
       nemesis = User(nemesis_name)
       sleep 1
-      m.reply "Hey #{nemesis.nick}! #{random_choice fiendbot_questions} \"infinite loop\"?!"
+      m.reply "Hey #{nemesis.nick}! #{random_choice responses[:fiendbot_questions]} \"infinite loop\"?!"
       sleep 1
-      nemesis.send "!say Yes, #{my_name}! #{random_choice friendbot_responses} \"infinite loop\"!!"
+      nemesis.send "!say Yes, #{my_name}! #{random_choice responses[:friendbot_responses]} \"infinite loop\"!!"
     else
       can_speak = true
     end
