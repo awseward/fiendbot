@@ -41,6 +41,10 @@ bot = Cinch::Bot.new do
     }
   end
 
+  on :connect do
+    Channel(channel_name).send(random_choice responses[:fiendbot_greetings])
+  end
+
   on :message, /^#{my_name}/i do |m|
     m.reply random_choice responses[:general_responses]
   end
