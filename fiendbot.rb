@@ -49,6 +49,14 @@ bot = Cinch::Bot.new do
     m.reply random_choice responses[:general_responses]
   end
 
+  on :message, "clear" do |m|
+    m.reply "This isn't your terminal, ya dingus!"
+  end
+  
+  on :message, "ls" do |m|
+    m.reply "This isn't your terminal, ya dingus!"
+  end
+
   on :message, /infinite loop/i do |m|
     if can_speak
       nemesis = User(nemesis_name)
