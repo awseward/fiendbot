@@ -6,7 +6,7 @@ ruby fakefriendbot.rb &
 FAKEFRIEND_PID=$!
 
 function finish {
-    echo " *** killing fiendbot (pid: ${FIEND_PID})*** "
+    echo " *** killing fiendbot (pid: ${FIEND_PID}) *** "
     kill $FIEND_PID
     echo " *** killing fakefriendbot (pid: ${FAKEFRIEND_PID}) *** "
     kill $FAKEFRIEND_PID

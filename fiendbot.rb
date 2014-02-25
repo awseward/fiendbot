@@ -53,7 +53,7 @@ bot = Cinch::Bot.new do
     m.reply "This isn't your terminal, ya dingus!"
   end
   
-  on :message, "ls" do |m|
+  on :message, /^ls/ do |m|
     m.reply "This isn't your terminal, ya dingus!"
   end
 
