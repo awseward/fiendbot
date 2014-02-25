@@ -16,7 +16,7 @@ else
 end
   
 my_name = "fiendbot"
-server_hostname = "irc.freenode.org"
+server_hostname = "irc.freenode.net"
 
 def random_choice(phrase_array)
   random_index = rand(phrase_array.length)
