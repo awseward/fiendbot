@@ -56,6 +56,10 @@ bot = Cinch::Bot.new do
   on :message, /^ls/ do |m|
     m.reply "This isn't your terminal, ya dingus!"
   end
+  
+  on :message, /^git/ do |m|
+    m.reply "This isn't your terminal, ya dingus!"
+  end
 
   on :message, /infinite loop/i do |m|
     if can_speak
