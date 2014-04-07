@@ -77,6 +77,10 @@ bot = Cinch::Bot.new do
     can_speak = false
     m.reply "Sorry, #{m.user.nick}. Jeez!"
   end
+
+  on :message, /word/i do |m|
+    m.reply "B-b-b-bird, bird, bird! B-b-bird is the word!"
+  end
 end
 
 bot.start
