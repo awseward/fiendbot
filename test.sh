@@ -1,8 +1,8 @@
 #!/bin/bash
 
-ruby fiendbot.rb &
+./fiendbot.rb &
 FIEND_PID=$!
-ruby fakefriendbot.rb &
+./fakefriendbot.rb &
 FAKEFRIEND_PID=$!
 
 function finish {

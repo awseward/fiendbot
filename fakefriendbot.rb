@@ -1,3 +1,5 @@
+!#/usr/bin/env ruby
+
 require 'cinch'
 
 my_name = "fakefriendbot"
