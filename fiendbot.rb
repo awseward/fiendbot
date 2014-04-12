@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'cinch'
 require 'cinch/plugins/identify'
 require 'yaml'
@@ -41,11 +43,11 @@ bot = Cinch::Bot.new do
     }
   end
 
-  on :connect do
-    Channel(channel_name).send(random_choice responses[:fiendbot_greetings])
-  end
+  # on :connect do
+  #   Channel(channel_name).send(random_choice responses[:fiendbot_greetings])
+  # end
 
-  on :message, /^#{my_name}/i do |m|
+  on :message, /#{my_name}/i do |m|
     m.reply random_choice responses[:general_responses]
   end
 
@@ -58,6 +60,14 @@ bot = Cinch::Bot.new do
   end
   
   on :message, /^git/ do |m|
+    m.reply "This isn't your terminal, ya dingus!"
+  end
+
+  on :message, /^quit/ do |m|
+    m.reply "This isn't your terminal, ya dingus!"
+  end
+
+  on :message, /^exit/ do |m|
     m.reply "This isn't your terminal, ya dingus!"
   end
 
@@ -78,8 +88,14 @@ bot = Cinch::Bot.new do
     m.reply "Sorry, #{m.user.nick}. Jeez!"
   end
 
-  on :message, /word/i do |m|
+  on :message, /^word/i do |m|
+    m.reply "Well eeeeeverybody's heard!"
+    m.reply "About the word!"
     m.reply "B-b-b-bird, bird, bird! B-b-bird is the word!"
+  end
+  
+  on :message, /^what what/i do |m|
+    m.reply "In the butt!"
   end
 end
 
